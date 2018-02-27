@@ -18,7 +18,7 @@
       <file leaf-file-name="DocAnalyzer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
+            <state relative-caret-position="428">
               <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
               <folding>
                 <element signature="method#DocAnalyzer#0;class#DocAnalyzer#0" expanded="false" />
@@ -27,11 +27,8 @@
                 <element signature="method#loadDirectory#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#snowballStemming#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#normalize#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="e#4342#4350#0" expanded="true" />
                 <element signature="e#4412#4426#0" expanded="true" />
-                <element signature="method#sortTokensbyTTF#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#createLanguageModel#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#main#0;class#DocAnalyzer#0" expanded="false" />
               </folding>
@@ -346,7 +343,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="428">
           <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
           <folding>
             <element signature="method#DocAnalyzer#0;class#DocAnalyzer#0" expanded="false" />
@@ -355,11 +352,8 @@
             <element signature="method#loadDirectory#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#snowballStemming#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#normalize#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="e#4342#4350#0" expanded="true" />
             <element signature="e#4412#4426#0" expanded="true" />
-            <element signature="method#sortTokensbyTTF#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#createLanguageModel#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#main#0;class#DocAnalyzer#0" expanded="false" />
           </folding>
