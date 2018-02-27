@@ -9,13 +9,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.io.FileWriter;
+//import java.util.Arrays;
+import java.util.*;
 
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.englishStemmer;
-import org.tartarus.snowball.ext.porterStemmer;
 
 import json.JSONArray;
 import json.JSONException;
@@ -35,16 +34,17 @@ public class DocAnalyzer {
 	//a list of stopwords
 	HashSet<String> m_stopwords;
 	
-	//you can store the loaded reviews in this arraylist for further processing
+    // all loaded reviews
 	ArrayList<Post> m_reviews;
 	
-	//you might need something like this to store the counting statistics for validating Zipf's and computing IDF
-	HashMap<String, Token> m_stats;	
+	// table of tokens
+	HashMap<String, Token> m_stats;
+
+	// table of tokens sorted by TTF
+    List<Map.Entry<String, Token>> m_sorted;
 	
-	//we have also provided a sample implementation of language model in src.structures.LanguageModel
 	Tokenizer m_tokenizer;
-	
-	//this structure is for language modeling
+
 	LanguageModel m_langModel;
 	
 	public DocAnalyzer(String tokenModel, int N) throws InvalidFormatException, FileNotFoundException, IOException {
@@ -55,104 +55,25 @@ public class DocAnalyzer {
 		m_stats = new HashMap<String, Token>();
 	}
 	
-	//sample code for loading a list of stopwords from file
-	//you can manually modify the stopword file to include your newly selected words
-	public void LoadStopwords(String filename) {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
-			String line;
+    public void loadStopwords(String filename) {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+            String line;
 
-			while ((line = reader.readLine()) != null) {
-				//it is very important that you perform the same processing operation to the loaded stopwords
-				//otherwise it won't be matched in the text content
-				line = SnowballStemming(Normalization(line)).trim();
-				if (!line.isEmpty())
-					m_stopwords.add(line);
-			}
-			reader.close();
-			System.out.format("Loading %d stopwords from %s\n", m_stopwords.size(), filename);
-		} catch(IOException e){
-			System.err.format("[Error]Failed to open file %s!!", filename);
-		}
-	}
-	
-	public void analyzeDocument(JSONObject json) {		
-		try {
-			JSONArray jarray = json.getJSONArray("Reviews");
-
-            for(int i=0; i<jarray.length(); i++) {
-				Post review = new Post(jarray.getJSONObject(i));
-				
-				String[] tokens = Tokenize(review.getContent());
-                ArrayList<String> bigrams = new ArrayList<String>();
-                HashMap<String,Token> vector = new HashMap<String,Token>();
-
-                tokens[0] = SnowballStemming(Normalization(tokens[0])).trim();
-
-                for (int j=1; j<tokens.length; j++) {
-                    //normalizing and stemming
-                    tokens[j] = SnowballStemming(Normalization(tokens[j])).trim();
-
-//                    //uncomment for unigram version
-//                    if(!m_stopwords.contains(tokens[j]) && tokens[j].length()>0) {
-//                        bigrams.add(tokens[j]);
-//                    }
-
-                    //create bigram if both tokens non-empty and non-stopword
-                    if(!m_stopwords.contains(tokens[j]) && tokens[j].length()>0 && !m_stopwords.contains(tokens[j-1]) && tokens[j-1].length()>0){
-                        bigrams.add(tokens[j-1] + "-" + tokens[j]);
-                    }
-                }
-
-                //create vector
-                for (int j=0; j<bigrams.size(); j++) {
-                    String key = bigrams.get(j);
-                    Token m = m_stats.get(key);
-                    Token t = vector.get(key);
-
-                    if (t == null) {
-                        t = new Token(key);
-                        t.setValue(1);
-                        vector.put(key,t);
-                    } else {
-                        t.setValue(t.getValue()+1);
-                    }
-
-                    if (m==null) {
-                        m = new Token(key);
-                        m.setValue(1);
-                        m_stats.put(key,m);
-                    }
-                    else {
-                        m.setValue(m.getValue()+1);
-                    }
-                }
-
-//                System.out.println(bigrams.size() - vector.size());
-//                System.out.println(m_stats.size());
-
-                review.setTokens(bigrams.toArray(new String[bigrams.size()]));
-                review.setVct(vector);
-                m_reviews.add(review);
+            while ((line = reader.readLine()) != null) {
+                line = snowballStemming(normalize(line)).trim();
+                if (!line.isEmpty())
+                    m_stopwords.add(line);
             }
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void createLanguageModel() {
-		m_langModel = new LanguageModel(m_N, m_stats.size());
-		
-		for(Post review:m_reviews) {
-			String[] tokens = Tokenize(review.getContent());
-
-			//TODO: copy analyzeDocument()
-			//TODO: update counts in LM structure (to perform MLE)
-		}
-	}
-	
-	//sample code for loading a json file
-	public JSONObject LoadJson(String filename) {
+            reader.close();
+            System.out.format("Loading %d stopwords from %s\n", m_stopwords.size(), filename);
+        } catch(IOException e){
+            System.err.format("[Error]Failed to open file %s!!", filename);
+        }
+    }
+    
+    // load a json file
+	public JSONObject loadJson(String filename) {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
 			StringBuffer buffer = new StringBuffer(1024);
@@ -175,22 +96,27 @@ public class DocAnalyzer {
 		}
 	}
 	
-	// sample code for demonstrating how to recursively load files in a directory 
-	public void LoadDirectory(String folder, String suffix) {
+	// recursively load files in a directory
+	public void loadDirectory(String folder, String suffix) {
         File dir = new File(folder);
         int size = m_reviews.size();
 		for (File f : dir.listFiles()) {
 			if (f.isFile() && f.getName().endsWith(suffix))
-				analyzeDocument(LoadJson(f.getAbsolutePath()));
+				analyzeDocument(loadJson(f.getAbsolutePath()));
 			else if (f.isDirectory())
-				LoadDirectory(f.getAbsolutePath(), suffix);
+				loadDirectory(f.getAbsolutePath(), suffix);
 		}
 		size = m_reviews.size() - size;
         System.out.println("Loading " + size + " review documents from " + folder);
     }
 
-	//sample code for demonstrating how to use Snowball stemmer
-	public String SnowballStemming(String token) {
+    // tokenize a string
+    String[] tokenize(String text) {
+        return m_tokenizer.tokenize(text);
+    }
+
+    // stem a token
+	public String snowballStemming(String token) {
 		SnowballStemmer stemmer = new englishStemmer();
 		stemmer.setCurrent(token);
 		if (stemmer.stem())
@@ -198,58 +124,121 @@ public class DocAnalyzer {
 		else
 			return token;
 	}
-	
-	//sample code for demonstrating how to use Porter stemmer
-	public String PorterStemming(String token) {
-		porterStemmer stemmer = new porterStemmer();
-		stemmer.setCurrent(token);
-		if (stemmer.stem())
-			return stemmer.getCurrent();
-		else
-			return token;
-	}
-	
-	//sample code for demonstrating how to perform text normalization
-	//you should implement your own normalization procedure here
-	public String Normalization(String token) {
-		// remove all non-word characters
-		// please change this to removing all English punctuation
-		token = token.replaceAll("\\W+", "");
-		token = token.replaceAll("\\p{P}","");
 
-		// convert to lower case
-		token = token.toLowerCase(); 
-		
-		// add a line to recognize integers and doubles via regular expression
-        // and convert the recognized integers and doubles to a special symbol "NUM"
-        token = token.replaceAll("(\\d+(?:\\.\\d+)?)","NUM");
+	// normalize a token
+	public String normalize(String token) {
 
-		return token;
-	}
-	
-	String[] Tokenize(String text) {
-		return m_tokenizer.tokenize(text);
+        //remove all non-word characters, English punctuation; replace integers, doubles with "NUM"
+		return token.replaceAll("\\W+", "")
+                .replaceAll("\\p{P}","")
+                .toLowerCase()
+                .replaceAll("(\\d+(?:\\.\\d+)?)","NUM");
 	}
 
-	public void TokenizerDemon(String text) {
-		System.out.format("Token\tNormalization\tSnowball Stemmer\tPorter Stemmer\n");
-		for(String token:m_tokenizer.tokenize(text)){
-			System.out.format("%s\t%s\t%s\t%s\n", token, Normalization(token), SnowballStemming(token), PorterStemming(token));
-		}
-	}
+    public void analyzeDocument(JSONObject json) {
+        try {
+            JSONArray jarray = json.getJSONArray("Reviews");
 
-	public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
+            for(int i=0; i<jarray.length(); i++) {
+                Post review = new Post(jarray.getJSONObject(i));
+
+                String[] tokens = tokenize(review.getContent());
+                ArrayList<String> bigrams = new ArrayList<String>();
+                HashMap<String,Token> vector = new HashMap<String,Token>();
+
+                tokens[0] = snowballStemming(normalize(tokens[0])).trim();
+
+                for (int j=1; j<tokens.length-1; j++) {
+                    //normalizing and stemming
+                    tokens[j] = snowballStemming(normalize(tokens[j])).trim();
+
+                    //create valid bigrams
+                    if(!m_stopwords.contains(tokens[j]) && tokens[j].length()>0 && !m_stopwords.contains(tokens[j-1]) && tokens[j-1].length()>0){
+                        bigrams.add(tokens[j-1] + "-" + tokens[j]);
+                    }
+                }
+
+                //create a vector per review && a table of all tokens
+                for (int j=0; j<bigrams.size(); j++) {
+                    String key = bigrams.get(j);
+                    Token m = m_stats.get(key);
+                    Token t = vector.get(key);
+
+                    if (t == null) {
+                        t = new Token(key);
+                        t.setValue(1);
+                        vector.put(key,t);
+                    } else {
+                        t.setValue(t.getValue()+1);
+                    }
+
+                    if (m == null) {
+                        m = new Token(key);
+                        m.setValue(1);
+                        m_stats.put(key,m);
+                    }
+                    else {
+                        m.setValue(m.getValue()+1);
+                    }
+                }
+
+                review.setTokens(bigrams.toArray(new String[bigrams.size()]));
+                review.setVct(vector);
+                m_reviews.add(review);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sortTokensbyTTF() {
+        m_sorted = new ArrayList<>(m_stats.entrySet());
+        Collections.sort(m_sorted, (e1, e2) -> Double.compare(e2.getValue().getValue(), e1.getValue().getValue()));
+    }
+
+    public void exportCSV(String csv_path){
+
+        try {
+            FileWriter writer = new FileWriter(csv_path);
+            writer.write("Token,Rank,TTF\n");
+
+            for (int i=0; i<m_stats.size(); i++) {
+                writer.write(m_sorted.get(i).getKey() + "," + (i+1) + "," + m_sorted.get(i).getValue().getValue() + "\n");
+            }
+
+            writer.flush();
+            writer.close();
+        }
+        catch(IOException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void createLanguageModel() {
+        m_langModel = new LanguageModel(m_N, m_stats.size());
+
+        for(Post review:m_reviews) {
+            String[] tokens = tokenize(review.getContent());
+
+            //TODO: copy analyzeDocument()
+            //TODO: update counts in LM structure (to perform MLE)
+        }
+    }
+
+    public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
 
 		String tokenizer_path = args[0];
 		String data_path = args[1];
-        String stopwords_path = args[2];
-        String data_type = args[3];
+		String stopwords_path = args[2];
+		String data_type = args[3];
+		String cvs_path = args[4];
 
 		DocAnalyzer analyzer = new DocAnalyzer(tokenizer_path,2);
 
-		analyzer.LoadStopwords(stopwords_path);
+		analyzer.loadStopwords(stopwords_path);
+		analyzer.loadDirectory(data_path, data_type);   // calls analyzeDocument
+		analyzer.sortTokensbyTTF();
+		analyzer.exportCSV(cvs_path);
 
-        //entry point to deal with a collection of documents
-		analyzer.LoadDirectory(data_path, data_type);
     }
 }
