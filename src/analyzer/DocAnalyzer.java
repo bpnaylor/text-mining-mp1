@@ -154,31 +154,16 @@ public class DocAnalyzer {
 
                     //create valid bigrams
                     if(!m_stopwords.contains(tokens[j]) && tokens[j].length()>0 && !m_stopwords.contains(tokens[j-1]) && tokens[j-1].length()>0){
-                        bigrams.add(tokens[j-1] + "-" + tokens[j]);
-                    }
-                }
-
-                //create a vector per review && a table of all tokens
-                for (int j=0; j<bigrams.size(); j++) {
-                    String key = bigrams.get(j);
-                    Token m = m_stats.get(key);
-                    Token t = vector.get(key);
-
-                    if (t == null) {
-                        t = new Token(key);
-                        t.setValue(1);
-                        vector.put(key,t);
-                    } else {
-                        t.setValue(t.getValue()+1);
+                        String key = tokens[j-1] + "-" + tokens[j];
+                        bigrams.add(key);
+                        checkDictionary(key);
                     }
 
-                    if (m == null) {
-                        m = new Token(key);
-                        m.setValue(1);
-                        m_stats.put(key,m);
-                    }
-                    else {
-                        m.setValue(m.getValue()+1);
+                    //create valid unigrams
+                    if(!m_stopwords.contains(tokens[j]) && tokens[j].length()>0) {
+                        String key = tokens[j];
+                        bigrams.add(key);
+                        checkDictionary(key);
                     }
                 }
 
@@ -188,6 +173,19 @@ public class DocAnalyzer {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void checkDictionary(String key) {
+        Token token = m_stats.get(key);
+
+        if(token==null) {
+            token = new Token(key);
+            token.setTTF(1);
+            m_stats.put(key,token);
+        }
+        else {
+            token.setTTF(token.getValue()+1);
         }
     }
 
