@@ -1,0 +1,7 @@
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.util.HashMap.resize(HashMap.java:703)
+	at java.util.HashMap.putVal(HashMap.java:662)
+	at java.util.HashMap.put(HashMap.java:611)
+	at analyzer.DocAnalyzer.encodeTestDocs(DocAnalyzer.java:364)
+	at analyzer.DocAnalyzer.loadDirectory(DocAnalyzer.java:95)
+	at analyzer.DocAnalyzer.main(DocAnalyzer.java:499)

@@ -28,6 +28,7 @@ public class DocAnalyzer {
     HashMap<String, Token> m_stats;	            // table of tokens
     List<Map.Entry<String, Token>> m_sorted;   	// table of tokens sorted by TTF
     Tokenizer m_tokenizer;
+    ArrayList<Post> m_queryReviews;              //all loaded query reviews
 //    LanguageModel m_langModel;
 	
 	public DocAnalyzer(String tokenModel, int N) throws InvalidFormatException, FileNotFoundException, IOException {
@@ -36,6 +37,7 @@ public class DocAnalyzer {
 		m_tokenizer = new TokenizerME(new TokenizerModel(new FileInputStream(tokenModel)));
 		m_stopwords = new HashSet<>();
 		m_stats = new HashMap<>();
+		m_queryReviews = new ArrayList<>();
 	}
 
 	// load stopwords
@@ -50,7 +52,7 @@ public class DocAnalyzer {
                     m_stopwords.add(line);
             }
             reader.close();
-            System.out.format("Loading %d stopwords from %s\n", m_stopwords.size(), filename);
+            // System.out.format("Loading %d stopwords from %s\n", m_stopwords.size(), filename);
         } catch(IOException e){
             System.err.format("[Error]Failed to open file %s!!", filename);
         }
@@ -89,13 +91,14 @@ public class DocAnalyzer {
 			    if(purpose.equals("train"))
                     analyzeDocument(loadJson(f.getAbsolutePath()));
                 else if (purpose.equals("test"))
-                    encodeTestDocs(loadJson(f.getAbsolutePath()), m_reviews);
+                    System.out.println("loading " + f.getAbsolutePath());
+                    encodeTestDocs(loadJson(f.getAbsolutePath()));
             }
 			else if (f.isDirectory())
 				loadDirectory(f.getAbsolutePath(), suffix, purpose);
 		}
 		size = m_reviews.size() - size;
-        System.out.println("Loading " + size + " review documents from " + folder);
+        // System.out.println("Loading " + size + " review documents from " + folder);
     }
 
     // tokenize a string
@@ -165,15 +168,19 @@ public class DocAnalyzer {
     public void checkDict(String key, String id) {
         Token token = m_stats.get(key);
 
+        // case: unseen token
         if(token==null) {
             token = new Token(key, id);
-            token.setVal1(1);
-            token.setVal2(1);
+            token.setVal1(1);       // TTF
+            token.setVal2(1);       // DF
             m_stats.put(key,token);
         }
         else {
+            // case: seen token
             token.setVal1(token.getVal1()+1);
+
             if(!token.getID().equals(id)){
+                //case: unseen token within current review
                 token.setVal2(token.getVal2()+1);
                 token.setID(id);
             }
@@ -272,7 +279,7 @@ public class DocAnalyzer {
 
     public void printControlledDict() {
 	    for (int i=0; i < m_sorted.size(); i++) {
-	        System.out.println(m_sorted.get(i).getKey());
+	        System.out.println(m_sorted.get(i).getKey() + "," + m_sorted.get(i).getValue().getVal2());  // key,idf
         }
     }
 
@@ -280,12 +287,17 @@ public class DocAnalyzer {
     public void loadControlledDict(String file_path) {
 	    BufferedReader reader = null;
         String line;
+        String[] str;
 
 	    try {
 	        reader = new BufferedReader(new FileReader(file_path));
 
 	        while ((line = reader.readLine()) != null) {
-	            m_stats.put(line.trim(), new Token(line.trim()));
+	            str = line.split(",");
+	            Token t = new Token(str[0].trim());
+	            t.setVal1(Double.parseDouble(str[1]));  // set idf
+
+	            m_stats.put(str[0].trim(), t);          //add to dictionary
             }
         }
         catch(IOException e) {
@@ -303,16 +315,16 @@ public class DocAnalyzer {
         }
     }
 
-    public void encodeTestDocs(JSONObject json, ArrayList<Post> reviews) {
+    public void encodeTestDocs(JSONObject json) {
         try {
             JSONArray jarray = json.getJSONArray("Reviews");
+            String key;
+            double idf;
 
             for(int i=0; i<jarray.length(); i++) {
                 Post review = new Post(jarray.getJSONObject(i));
                 String[] tokens = tokenize(review.getContent());
                 HashMap<String, Token> vector = new HashMap<>();
-                String key;
-                double count;
 
                 tokens[0] = snowballStemming(normalize(tokens[0])).trim();
 
@@ -320,12 +332,14 @@ public class DocAnalyzer {
                     //normalizing and stemming
                     tokens[j] = snowballStemming(normalize(tokens[j])).trim();
 
+                    // add unigrams that are in dictionary
                     key = tokens[j];
                     if(m_stats.containsKey(key)) {
                         Token t = vector.get(key);
                         vector.put(key, checkVect(key, t, review.getID()));
                     }
 
+                    // add bigrams that are in dictionary
                     key = tokens[j-1] + "-" + tokens[j];
                     if(m_stats.containsKey(key)) {
                         Token t = vector.get(key);
@@ -333,8 +347,83 @@ public class DocAnalyzer {
                     }
                 }
 
+                // calculating weights
+                for(String j : m_stats.keySet()) {
+
+                    idf = m_stats.get(j).getVal1();
+                    Token t = vector.get(j);
+
+                    if (t==null) {
+                        t = new Token(j, review.getID());
+                        t.setVal1(0.0);     // set weight = 0.0 = tf if basis element does not appear in review
+                    }
+                    else {
+                        t.setVal1(idf*1+Math.log(t.getVal1()));     // set weight = idf * normalized tf otherwise
+                    }
+
+                    vector.put(j,t);        // place/replace token
+                }
+
                 review.setVct(vector);
-                reviews.add(review);
+                m_reviews.add(review);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void encodeQueryDocs(JSONObject json) {
+        try {
+            JSONArray jarray = json.getJSONArray("Reviews");
+
+            String key;
+            double idf;
+
+            for(int i=0; i<jarray.length(); i++) {
+                Post review = new Post(jarray.getJSONObject(i));
+                String[] tokens = tokenize(review.getContent());
+                HashMap<String, Token> vector = new HashMap<>();
+
+                tokens[0] = snowballStemming(normalize(tokens[0])).trim();
+
+                for (int j=1; j<tokens.length-1; j++) {
+                    //normalizing and stemming
+                    tokens[j] = snowballStemming(normalize(tokens[j])).trim();
+
+                    // add unigrams that are in dictionary
+                    key = tokens[j];
+                    if(m_stats.containsKey(key)) {
+                        Token t = vector.get(key);
+                        vector.put(key, checkVect(key, t, review.getID()));
+                    }
+
+                    // add bigrams that are in dictionary
+                    key = tokens[j-1] + "-" + tokens[j];
+                    if(m_stats.containsKey(key)) {
+                        Token t = vector.get(key);
+                        vector.put(key, checkVect(key, t, review.getID()));
+                    }
+                }
+
+                // calculating weights
+                for(String j : m_stats.keySet()) {
+
+                    idf = m_stats.get(j).getVal1();
+                    Token t = vector.get(j);
+
+                    if (t==null) {
+                        t = new Token(j, review.getID());
+                        t.setVal1(0.0);     // set weight = 0.0 = tf if basis element does not appear in review
+                    }
+                    else {
+                        t.setVal1(idf*1+Math.log(t.getVal1()));     // set weight = idf * normalized tf otherwise
+                    }
+
+                    vector.put(j,t);        // place/replace token
+                }
+
+                review.setVct(vector);
+                m_queryReviews.add(review);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -345,12 +434,10 @@ public class DocAnalyzer {
 
         if(t == null) {
             t = new Token(key, id);
-            t.setVal1(1);
-            t.setVal2(1);
+            t.setVal1(1.0);                 // initialize count to 1
         }
         else {
-            t.setVal1(t.getVal1()+1);
-            t.setVal2(1 + Math.log(t.getVal1()));
+            t.setVal1(t.getVal1()+1.0);     // increment count
         }
 
         return(t);
@@ -359,14 +446,34 @@ public class DocAnalyzer {
     public void loadQuery(String file_path) {
         File f = new File(file_path);
 	    JSONObject json = loadJson(f.getAbsolutePath());
-        ArrayList<Post> queryReviews = new ArrayList<>();
+        encodeQueryDocs(json);
 
-	    encodeTestDocs(json, queryReviews);
+	    for (Post queryReview : m_queryReviews) {
 
-	    // TODO: best time to calculate cosine similarity
-        // TODO: best way to find 3 most similar test docs to each query doc
-        // TODO: clean up code
+            HashMap<Post,Double> similar = new HashMap<>();
+            double sim;
 
+            for (Post testReview : m_reviews) {
+	            sim = testReview.similiarity(queryReview);
+                similar.put(testReview,sim);
+            }
+
+            ArrayList<Post> sorted = new ArrayList<>(similar.keySet());
+            Collections.sort(sorted, (r1, r2) -> Double.compare(similar.get(r2), similar.get(r1)));
+
+            System.out.println("QUERY: " + queryReview.getAuthor() + ", " + queryReview.getDate());
+            // System.out.println(queryReview.getContent());
+
+            for (int i=0; i<3; i++) {
+                System.out.println(i+1 + ", cosine similarity = " + similar.get(sorted.get(i)));
+                System.out.println(sorted.get(i).getAuthor() + ", " + sorted.get(i).getDate());
+                System.out.println(sorted.get(i).getContent());
+                System.out.println("");
+            }
+
+            System.out.println("");
+            System.out.println("");
+        }
     }
 
     public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
@@ -377,7 +484,7 @@ public class DocAnalyzer {
 		String data_type = args[3];
 		String file_path = args[4];
         String test_path = args[5];
-        String query_path = args[6];        // TODO: add to IDE command line args
+        String query_path = args[6];
 
 		DocAnalyzer analyzer = new DocAnalyzer(tokenizer_path,2);
 
@@ -388,18 +495,17 @@ public class DocAnalyzer {
 //        analyzer.exportCSV(file_path, "ttf");
 
         /* 1.2 Construct a Controlled Vocabulary */
-//        analyzer.loadStopwords(stopwords_path);
-//        analyzer.loadDirectory(data_path, data_type, "train");   // calls analyzeDocument
-//        analyzer.sortDictbyDF();
-//        analyzer.exportCSV(file_path,"df");
-//        analyzer.removeLowDF();
-//        analyzer.printIDFs();
-//        analyzer.printControlledDict();
+        analyzer.loadStopwords(stopwords_path);
+        analyzer.loadDirectory(data_path, data_type, "train");   // calls analyzeDocument
+        analyzer.sortDictbyDF();
+        // analyzer.exportCSV(file_path,"df");
+        analyzer.removeLowDF();
+        analyzer.printIDFs();
+        analyzer.printControlledDict();
 
-        /* 1.3 Compute similarity between documents */
-        analyzer.loadControlledDict("controlled_dict.txt");
-        analyzer.loadDirectory(test_path, data_type,"test");    //calls encodeTestDocs
-        analyzer.loadQuery(query_path);
-
+//        /* 1.3 Compute similarity between documents */
+//        analyzer.loadControlledDict("controlled_dict.txt");
+//        analyzer.loadDirectory(test_path, data_type,"test");    //calls encodeTestDocs
+//        analyzer.loadQuery(query_path);
 	}
 }
