@@ -25,7 +25,7 @@ public class LanguageModel {
 	}
 	
 	public double calcMLProb(String token) {
-		// return m_model.get(token).getValue(); // should be something like this
+		// return m_model.get(token).getVal1(); // should be something like this
 		return 0;
 	}
 
