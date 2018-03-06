@@ -47,7 +47,7 @@ public class Token {
 	}
 
 	//default constructor
-	public Token(String id, String token) {
+	public Token(String token, String id) {
 		m_token = token;
 		m_id = id;
 		m_val1 = 0;

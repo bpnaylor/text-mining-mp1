@@ -1,0 +1,78 @@
+loaded controlled dictionary
+loading test C:\Users\redwa_000\Downloads\Max\0 UVa\Text Mining\Machine Problem 1\yelp\test\CvmAN25laBbwZTqmlEAR1Q.json
+loading test C:\Users\redwa_000\Downloads\Max\0 UVa\Text Mining\Machine Problem 1\yelp\test\gQCn4Gv-4_UUUFwpo-zHvA.json
+QUERY: Jack, 2015-02-01, Houston, TX
+1, cosine similarity = 0.18061981577751277
+Littlelady U., 2013-09-22
+Still living, with a mad craving for some good bbq, I finally made it to Smoque before it closed for the night. I walked in at a quarter to 9pm on a Sunday and was greeted by a friendly young man, "Hello, ma'am.' I was afraid he was gonna tell me they were closed, but when I asked, 'Are y'all still open?' he smiled and opened a hand toward the counter.I stepped up and ordered a pulled pork sandwich a la carte and a brisket platter entree with french fries and peach cobbler as my two sides. I was even offered, "For here, or to go?' I ordered carry-out and sat down to wait. My number was called and I was handed a bag full of piping hot food that smelled delicious. When I got to the car I noticed it wasn't even 9 o'clock yet. Wow, quick service.I couldn't help but sample the fries on the way home and they were sooo good!When I got home and ate my meal, it was all I could have asked for, and more. The meat was perfectly tender. If you want sauce on your brisket you'll have to pour it on, because it's too tender to dip. The slow-cooked brisket tasted similar to that my grandma used to make. I really enjoyed it. I tried a piece of the pulled pork sandwich, and it, too, was really tasty. I like that they put the sauce on the side. I'm a dipper, I love sauces, but the meat is just as delicious without it. The entree also came with a side of slaw which is vinegar based and made with fresh cabbage.The peach cobbler was really flavorful and I like how it was served in an individual tin, and that it was warm. I would add a little more crust and/or almonds to the topping, so it' s a little thicker, but that dessert was absolutely nothing to complain about!I was in the restaurant just a few minutes before they closed as I awaited my carryout order, and while there were loads of customers still eating at the tables and a bunch of workers moving about, it didn't have a stressful atmosphere at all. The people who work there all had super friendly demeanors and the food I was served was hot and delicious.Everything I ordered at Smoque tonight was fresh and tasty and I recommend this restaurant highly if you're in the mood for some good BBQ and southern style comfort food. I will most definitely be back and look forward to trying some other things on the menu, as well.Keep up the good work guys. You rock.
+
+2, cosine similarity = 0.1648429953634426
+Erin P., 2008-07-21
+3.5Between the mixed reviews of unfriendly service and "Trixie/Chad" customers and the fact that it is kind of a chain restaurant (having another restaurant in Las Vegas) I expected to dislike it.Saturday night at 6PM my friends and I (5 people) walked in with no reservation and wanted to sit on the patio. The hostess that helped us was friendly and took our information and predicted a 30-40 min wait. We actually only waited at the bar for about 20 min, tops, and while drinking a pitcher of sangria the time passed quickly.  I am not a sangria fan but on this evening I did not seem to have a problem helping to finish the pitchers we got.Once seated on the patio our server (Desere I think) greeted us right away and made some menu recommendations.  We got another pitcher of sangria and set out to decide on items from the menu.  We got a small lobster paella (which takes 30 min) and decided to order our first round of tapas.  The easiest way we found to do this was to have each of us pick one plate and then all share it. The highlights from this round were the goat cheese stuffed mushrooms and escargots and the spicy potatoes.  Although I enjoyed everything I found the hot tapas dishes on the greasy side.  The big hits for the table for the second round were the hot goat cheese and the roasted tomatoes filled with tuna.  The food came out very quickly.After two pitchers of sangria, 11 small plates and small paella were all very full.  Surprisingly the bill did not turn out to be as expensive as I expected for all of the food that we had. We paid about $30/per person.  Overall it was a much better experience than I expected service was great and fast and the food, although kind of greasy, was tasty and good. I do not know if I will go back but it not for bad food or bad service  , because I would rather explore other Chicago tapas restaurants.My suggestions:-As expected most items came with 2-4 pieces which is not always easy when you have a party of 5, so be prepared to split mushrooms or scallops in half with your dining companions.-Order some tapas from both the hot and cold sides of the menu to balance out the greasiness of the hot items.
+
+3, cosine similarity = 0.14842786850374468
+Kyle H., 2014-03-08
+This was seriously the best food I've had since living in this city! I've been here multiple times but after this last time I had to leave a review. The food is always fantastic, the sangria is the best tasting as well as the best deal in the city. But I always had the best server/waitress. Lindsay was amazing, super nice to us all, explained everything to my friends who had never been there before and even hooked us up with some free desserts! If you guys have other staff half as good as her you're going to always have happy customers! I can't wait to come back again!!Your tapas and sangria is greatSo much food to fill my small plateThe atmosphere's a blastThe good times always lastAnd Lindsay was so awesome to me and my bro date!
+
+
+
+QUERY: Tom, 2015-02-01, Houston, TX
+1, cosine similarity = 0.15932029934576653
+Kim And Bill R., 2014-07-05
+We where in town for the 4th of July weekend, and a good friend recommend we try this place. There where four of us and everybody ordered something different. The only things we didn't try were the chicken and the brisket chili. Sliced Brisket - 5 Stars, great flavor, moist, good bark.Pulled Pork - 4 Stars, would have been 5 but the sauce knocked it down one. Spare Ribs - 3 Stars, a little bland, a little soft. Fall off the bone is good, but     it's nice to have some texture. The sauce didn't help much.Texas Sausage - 4 Stars, good flavor, not over cooked, we'll worth the adder on a plate. Beans - 4 Stars, good taste not mushy. The meat scraps are a great addition.Mac & Cheese - 3 Stars, the crispy top was great but the cheese had separated, not the creamy texture I expected. Fries - 4 Stars, French cut and good, just needed a little more salt. Corn Bread - 2 Stars, nothing special. Cole Slaw - 3 Stars, vinegar based and good compliment to a heavy meal. Peach Cobbler - 5 Stars, one of the best I have ever had. Good texture and firmness on the peaches. The topping was just right, not overly sweet. Bread Pudding - 5 Stars, thick and rich, not overly done. The only issue was I should have eaten it in the beginning of the meal. It has cooled down by the time we dug in. Service - 5 Stars, great people, friendly and willing to help. Glad we went and will definitely return the next time we are in town.
+
+2, cosine similarity = 0.15666251990615135
+Rachel W., 2012-10-11
+Went here the other night - food was wonderful!  Only reason I am giving 4 stars instead of 5 stars is because it took a very long time.... we realized we were there for an hour and had only received 2 of the 8 (or so) tapas we had ordered.  We asked our server about this, and she took care of it and the tapas started coming out at a quicker pace after that.  It was so much fun!
+
+3, cosine similarity = 0.15498182403955732
+Ricky R., 2013-08-05
+3.5 stars was just as good as Cafe Iberico, but I didn't get that authentic feel. Wine list was enjoyable, food was delicious, and service was good. It was a quiet night, Monday 9:00PM, and the hostess was MIA we had to wait a while which I did not care for. For LP it was great.
+
+
+
+QUERY: Jack, 2015-02-01, Houston, TX
+1, cosine similarity = 0.22412216556324682
+Baron V., 2014-04-14
+Some of the best BBQ I've had anywhere! Definitely the best in Chicago! Everything is great and mouth watering, the brisket is the standout. If you want excellent BBQ go here, no questions asked. There will be a line, but it moves quick and it will be worth it.
+
+2, cosine similarity = 0.21824374005210756
+Patti W., 2013-06-30
+Best BBQ around.  Bar none.  There might be a line, but it's managed super efficiently, line moves quickly and food is well worth the wait.  The pulled pork is my favorite, and love the Mac&cheese.  Super clean.  BYOB
+
+3, cosine similarity = 0.20337890208973872
+Kelley S., 2013-08-10
+Yumitty-yum-yum-yum!!!  This BYOB restaurant was a card in our "a-la-card" deck and was the first card we used.  They were out of their brisket the night we went, but that wasn't my first choice anyhow so no biggee.  The staff was super-nice and made sure we were well aware they were out of brisket before we got in line.The line was long, but it moved quickly.  The staff was fabulous and set us up with a table and high chair ready after we placed our order.  Again we had to spend $25 to get $10 off so we ordered a full pulled pork sandwich a half pulled pork sandwich a rack of ribs and a side of sausage (for our son).  Everything was delicious!  Right down to the mountain of fries, the cole slaw and the sauce.  The wait from a line to the door to placing our order was probably about 12 minutes.  We then waited maybe another 8 minutes for our food.  Excellent efficiency for a restaurant that was absolutely packed.Not too close to us, but this one isn't too far either and is worth the drive.  We will definitely go back.
+
+
+
+QUERY: Jack, 2015-02-01, Houston, TX
+1, cosine similarity = 0.1779481985074058
+Crystal P., 2009-01-30
+Newish menu. We got the citrus cured salmon Yuck! The salmon was served flavorless on cucumber toast (also flavorless) with sour cream .. icky.. We also got the seared Tuna FAB-O so yummy a huge contrast from the other dish!!! Stuffed Mushroom caps Also excellent! Manchego cheese and Spinach! love!!!!!! The usuals were great as usual! Potatoes and calamari. New menu 2 thumbs up
+
+2, cosine similarity = 0.14651291379452525
+Tammy L., 2013-07-13
+This Lettuce Entertain You place is a solidly good choice, which is quite obvious considering the perpetual crowds.  I have enjoyed the food more in my fast couple of visits than I have in the past.  Don't know if something has changed at the restaurant in the past year or so, or if I have just gotten lucky with ordering.  But anyway, their house-made bread is really good and all the brunch/tapas dishes I have tried recently have been very nice.  Most recently, my husband and I tried their tuna tartare special, which was seasoned with shoyu (soy sauce) and some thinly sliced red peppers, and served with potato chips.  Very tasty.  The bloody mary bar is really good.  Bloody maries are drinks that I haven't really enjoyed until recently.  It's both a blessing and a curse to be able to mix your own.  This place gets really crowded at dinner, so I enjoy going there at brunch.  The service is very friendly.  I recommend it as a good, reliable choice on the Lincoln Park stretch of Halsted.  It won't blow your mind necessarily, but it's a great place to get together with friends over some good food and beverages.
+
+3, cosine similarity = 0.1333044356112928
+Josh H., 2012-08-06
+The food here was spectacular, as was the atmosphere and service.  We ordered one of each of the pintxos.  They were all good, but the chorizo wrapped dates were amazing.  You could probably make a meal of them alone.  My wife ordered a few tapas (salmon, meatballs and stuffed mushrooms) and I got the paella de mariscos.  The meatballs were some of the best I've ever tasted, as was the shrimp in the paella.  The black raspberry sangria was delicious, if a little sweet.  The bitter orange beauty was a great twist on an old fashioned.  Since it was our anniversary (which we let them know when making the reservation) they gave us a free deserts (chocolate truffle cake and butterscotch custard) which were delicious.  Overall, this was a great experience.  Anyone who likes Spanish food should check this place out.
+
+
+
+QUERY: Patricia S., 2014-06-18, Houston, TX
+1, cosine similarity = 0.43373286605577305
+Erica I., 2011-12-03
+The mac and cheese and peach cobbler were the BEST!  I'd go back just for those.
+
+2, cosine similarity = 0.42198525198925496
+Steve F., 2013-06-09
+Best ribs in ChicagoBaby backs are the best, try the peach cobbler if you have room.
+
+3, cosine similarity = 0.41461509615908965
+Shira J., 2014-01-26
+Delicious! Peach cobbler is wonderful! Prices are reasonable. But the lines are long. Guess that's what happens when you have wonderful food.
+
+
+

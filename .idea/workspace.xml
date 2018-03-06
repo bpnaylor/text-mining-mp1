@@ -4,7 +4,7 @@
     <list default="true" id="4d4999b6-cf9f-4a8c-920c-2f1d032ec7d8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/analyzer/DocAnalyzer.java" afterPath="$PROJECT_DIR$/src/analyzer/DocAnalyzer.java" />
-      <change beforePath="$PROJECT_DIR$/src/structures/LanguageModel.java" afterPath="$PROJECT_DIR$/src/structures/LanguageModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/structures/Post.java" afterPath="$PROJECT_DIR$/src/structures/Post.java" />
       <change beforePath="$PROJECT_DIR$/src/structures/Token.java" afterPath="$PROJECT_DIR$/src/structures/Token.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -20,15 +20,11 @@
       <file leaf-file-name="DocAnalyzer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="379" column="53" lean-forward="false" selection-start-line="379" selection-start-column="53" selection-end-line="379" selection-end-column="53" />
+            <state relative-caret-position="4913">
+              <caret line="450" column="5" lean-forward="true" selection-start-line="450" selection-start-column="5" selection-end-line="450" selection-end-column="5" />
               <folding>
-                <element signature="method#DocAnalyzer#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#loadStopwords#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#loadJson#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#loadDirectory#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#snowballStemming#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#normalize#0;class#DocAnalyzer#0" expanded="false" />
+                <element signature="e#3557#3558#0" expanded="true" />
+                <element signature="e#3606#3607#0" expanded="true" />
                 <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
@@ -37,9 +33,6 @@
                 <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
                 <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#loadControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#encodeTestDocs#0;class#DocAnalyzer#0" expanded="false" />
-                <element signature="method#checkVect#0;class#DocAnalyzer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -48,18 +41,9 @@
       <file leaf-file-name="Token.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-              <folding>
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#494#495#0" expanded="true" />
-                <element signature="e#529#530#0" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#694#695#0" expanded="true" />
-                <element signature="e#717#718#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,10 +51,41 @@
       <file leaf-file-name="Post.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="98" column="39" lean-forward="false" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+            <state relative-caret-position="123">
+              <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
               <folding>
-                <element signature="method#setContent#0;class#Post#0" expanded="false" />
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#224#225#0" expanded="true" />
+                <element signature="e#251#252#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
+                <element signature="e#345#346#0" expanded="true" />
+                <element signature="e#367#368#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#437#438#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#535#536#0" expanded="true" />
+                <element signature="e#580#581#0" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+                <element signature="e#686#687#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+                <element signature="e#961#962#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1043#1044#0" expanded="true" />
+                <element signature="e#1141#1142#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1233#1234#0" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1276#1277#0" expanded="true" />
+                <element signature="e#1358#1359#0" expanded="true" />
+                <element signature="e#1380#1381#0" expanded="true" />
+                <element signature="e#1424#1425#0" expanded="true" />
+                <element signature="e#1448#1449#0" expanded="true" />
+                <element signature="e#1631#1632#0" expanded="true" />
+                <element signature="e#1653#1654#0" expanded="true" />
                 <element signature="e#1705#1706#0" expanded="true" />
                 <element signature="e#1726#1727#0" expanded="true" />
               </folding>
@@ -82,28 +97,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exportCSv</find>
-      <find>write</find>
-      <find>m_sorted</find>
-      <find>replaceall</find>
-      <find>test</find>
-      <find>Normalization</find>
-      <find>normalization</find>
-      <find>getVAlue</find>
-      <find>checkDictionary</find>
-      <find>id</find>
-      <find>export</find>
-      <find>import</find>
       <find>remove</find>
       <find>sort</find>
-      <find>idf</find>
       <find>create</find>
-      <find>new</find>
       <find>new</find>
       <find>json</find>
       <find>analyzeDoc</find>
       <find>loadDirectory</find>
-      <find>loaddirectory</find>
       <find>getAbs</find>
       <find>get</find>
       <find>getabsolute</find>
@@ -112,6 +112,21 @@
       <find>encodeTest</find>
       <find>exportCSV</find>
       <find>todo</find>
+      <find>printcontrolled</find>
+      <find>printcontrolleddi</find>
+      <find>ArrayList&lt;Post&gt;</find>
+      <find>printcontrolleddict</find>
+      <find>vct</find>
+      <find>new Token</find>
+      <find>checkdict</find>
+      <find>check</find>
+      <find>checkvect</find>
+      <find>loaddirectory</find>
+      <find>idf</find>
+      <find>print</find>
+      <find>log</find>
+      <find>encodetestdocs</find>
+      <find>encode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,14 +145,77 @@
         <option value="$PROJECT_DIR$/top_bottom_idfs.txt" />
         <option value="$PROJECT_DIR$/controlled_dict.txt" />
         <option value="$PROJECT_DIR$/src/structures/Token.java" />
+        <option value="$PROJECT_DIR$/src/structures/Post.java" />
         <option value="$PROJECT_DIR$/src/analyzer/DocAnalyzer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="619" />
+    <option name="y" value="2" />
     <option name="width" value="697" />
     <option name="height" value="735" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Initialization issuesJava</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Memory issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>Redundant constructsKotlin</id>
+          </State>
+          <State>
+            <id>RegExp</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AndroidLintWifiManagerLeak</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -155,8 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,17 +241,13 @@
               <item name="MP1" type="b2602c69:ProjectViewProjectNode" />
               <item name="MP1" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MP1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MP1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -182,6 +255,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -213,7 +287,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="analyzer.DocAnalyzer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\MP1\\data\\Model\\en-token.bin&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\yelp\\train&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\stopwordlist.txt&quot; &quot;.json&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\low_df_list.txt&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\yelp\\train&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\MP1\\data\\Model\\en-token.bin&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\yelp\\train&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\stopwordlist.txt&quot; &quot;.json&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\low_df_list.txt&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\yelp\\test&quot; &quot;C:\\Users\\redwa_000\\Downloads\\Max\\0 UVa\\Text Mining\\Machine Problem 1\\yelp\\query.json&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -320,7 +394,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -329,50 +403,115 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35816166" sideWeight="0.5204978" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35816166" sideWeight="0.52342606" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35816166" sideWeight="0.4795022" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35816166" sideWeight="0.47657394" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12811127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.48316252" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38510302" sideWeight="0.8433382" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.48316252" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="24" lean-forward="false" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+          <folding>
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#DocAnalyzer#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadStopwords#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadJson#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadDirectory#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#snowballStemming#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#normalize#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
             <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
@@ -381,9 +520,218 @@
             <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#encodeTestDocs#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#checkVect#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="91" column="24" lean-forward="false" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+          <folding>
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="21" lean-forward="false" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="39" lean-forward="false" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -392,16 +740,189 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MP1.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="133" column="19" lean-forward="true" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="149" column="8" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../low_df_list.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="383" column="10" lean-forward="false" selection-start-line="383" selection-start-column="10" selection-end-line="383" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controlled_dict.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/LanguageModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/top_bottom_idfs.txt" />
+    <entry file="file://$PROJECT_DIR$/output.txt" />
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="92" column="42" lean-forward="false" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
           <folding>
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#494#495#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="95" column="53" lean-forward="false" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#sortDictbyDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#exportCSV#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -451,7 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -459,7 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
           <caret line="149" column="8" lean-forward="false" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -467,7 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -475,7 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,66 +1000,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="383" column="10" lean-forward="false" selection-start-line="383" selection-start-column="10" selection-end-line="383" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/top_bottom_idfs.txt">
+    <entry file="file://$PROJECT_DIR$/top_bottom_idfs.txt" />
+    <entry file="file://$PROJECT_DIR$/controlled_dict.txt" />
+    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controlled_dict.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="3715" column="7" lean-forward="true" selection-start-line="3715" selection-start-column="7" selection-end-line="3715" selection-end-column="7" />
+        <state relative-caret-position="68">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/structures/Post.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="98" column="39" lean-forward="false" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+        <state relative-caret-position="123">
+          <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
           <folding>
-            <element signature="method#setContent#0;class#Post#0" expanded="false" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
             <element signature="e#1705#1706#0" expanded="true" />
             <element signature="e#1726#1727#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/structures/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-          <folding>
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#494#495#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/analyzer/DocAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="379" column="53" lean-forward="false" selection-start-line="379" selection-start-column="53" selection-end-line="379" selection-end-column="53" />
+        <state relative-caret-position="4913">
+          <caret line="450" column="5" lean-forward="true" selection-start-line="450" selection-start-column="5" selection-end-line="450" selection-end-column="5" />
           <folding>
-            <element signature="method#DocAnalyzer#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadStopwords#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadJson#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadDirectory#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#snowballStemming#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#normalize#0;class#DocAnalyzer#0" expanded="false" />
+            <element signature="e#3557#3558#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
             <element signature="method#analyzeDocument#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#checkDict#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#sortDictbyTTF#0;class#DocAnalyzer#0" expanded="false" />
@@ -551,9 +1071,6 @@
             <element signature="method#removeLowDF#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#printIDFs#0;class#DocAnalyzer#0" expanded="false" />
             <element signature="method#printControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#loadControlledDict#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#encodeTestDocs#0;class#DocAnalyzer#0" expanded="false" />
-            <element signature="method#checkVect#0;class#DocAnalyzer#0" expanded="false" />
           </folding>
         </state>
       </provider>

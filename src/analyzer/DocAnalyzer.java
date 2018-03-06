@@ -88,14 +88,16 @@ public class DocAnalyzer {
 			if (f.isFile() && f.getName().endsWith(suffix)) {
 			    if(purpose.equals("train"))
                     analyzeDocument(loadJson(f.getAbsolutePath()));
-                else if (purpose.equals("test"))
+                else if (purpose.equals("test")) {
+                    System.out.println("loading test " + f.getAbsolutePath());
                     encodeTestDocs(loadJson(f.getAbsolutePath()), m_reviews);
+                }
             }
 			else if (f.isDirectory())
 				loadDirectory(f.getAbsolutePath(), suffix, purpose);
 		}
 		size = m_reviews.size() - size;
-        System.out.println("Loading " + size + " review documents from " + folder);
+//        System.out.println("Loading " + size + " review documents from " + folder);
     }
 
     // tokenize a string
@@ -271,8 +273,15 @@ public class DocAnalyzer {
     }
 
     public void printControlledDict() {
-	    for (int i=0; i < m_sorted.size(); i++) {
-	        System.out.println(m_sorted.get(i).getKey());
+	    int size = m_sorted.size();
+        double idf;
+        double df;
+        double n = (double)m_reviews.size();
+
+	    for(int i=0; i < size; i++) {
+            df = m_sorted.get(i).getValue().getVal2();
+            idf = 1 + Math.log(n/df);
+	        System.out.println(m_sorted.get(i).getKey() + "," + idf);
         }
     }
 
@@ -285,8 +294,14 @@ public class DocAnalyzer {
 	        reader = new BufferedReader(new FileReader(file_path));
 
 	        while ((line = reader.readLine()) != null) {
-	            m_stats.put(line.trim(), new Token(line.trim()));
+	            String[] str = line.split(",");
+                Token t = new Token(str[0].trim());
+                t.setVal1(Double.parseDouble(str[1]));  // set idf
+
+                m_stats.put(str[0].trim(), t);          //add to dictionary
             }
+
+            System.out.println("loaded controlled dictionary");
         }
         catch(IOException e) {
 	        e.printStackTrace();
@@ -312,7 +327,6 @@ public class DocAnalyzer {
                 String[] tokens = tokenize(review.getContent());
                 HashMap<String, Token> vector = new HashMap<>();
                 String key;
-                double count;
 
                 tokens[0] = snowballStemming(normalize(tokens[0])).trim();
 
@@ -333,6 +347,20 @@ public class DocAnalyzer {
                     }
                 }
 
+                for(String j : m_stats.keySet()) {
+
+                    double idf = m_stats.get(j).getVal1();
+                    Token t = vector.get(j);
+
+                    if (t==null) {
+                        t = new Token(j, review.getID());
+                        t.setVal1(0.0);     // set weight = 0.0 = tf if basis element does not appear in review
+                    }
+                    else {
+                        t.setVal1(idf*1+Math.log(t.getVal1()));     // set weight = idf * normalized tf otherwise
+                    }
+                    vector.put(j,t);        // place/replace token
+                }
                 review.setVct(vector);
                 reviews.add(review);
             }
@@ -346,11 +374,9 @@ public class DocAnalyzer {
         if(t == null) {
             t = new Token(key, id);
             t.setVal1(1);
-            t.setVal2(1);
         }
         else {
             t.setVal1(t.getVal1()+1);
-            t.setVal2(1 + Math.log(t.getVal1()));
         }
 
         return(t);
@@ -363,10 +389,31 @@ public class DocAnalyzer {
 
 	    encodeTestDocs(json, queryReviews);
 
-	    // TODO: best time to calculate cosine similarity
-        // TODO: best way to find 3 most similar test docs to each query doc
-        // TODO: clean up code
+        for (Post queryReview : queryReviews) {
 
+            HashMap<Post, Double> similar = new HashMap<>();
+            double sim;
+
+            for (Post testReview : m_reviews) {
+                sim = testReview.similiarity(queryReview);
+                similar.put(testReview, sim);
+            }
+
+            ArrayList<Post> sorted = new ArrayList<>(similar.keySet());
+            Collections.sort(sorted, (r1, r2) -> Double.compare(similar.get(r2), similar.get(r1)));
+
+            System.out.println("QUERY: " + queryReview.getAuthor() + ", " + queryReview.getDate() + ", " + queryReview.getLocation());
+
+            for (int i = 0; i < 3; i++) {
+                System.out.println(i + 1 + ", cosine similarity = " + similar.get(sorted.get(i)));
+                System.out.println(sorted.get(i).getAuthor() + ", " + sorted.get(i).getDate());
+                System.out.println(sorted.get(i).getContent());
+                System.out.println("");
+            }
+
+            System.out.println("");
+            System.out.println("");
+        }
     }
 
     public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
@@ -391,9 +438,9 @@ public class DocAnalyzer {
 //        analyzer.loadStopwords(stopwords_path);
 //        analyzer.loadDirectory(data_path, data_type, "train");   // calls analyzeDocument
 //        analyzer.sortDictbyDF();
-//        analyzer.exportCSV(file_path,"df");
+////        analyzer.exportCSV(file_path,"df");
 //        analyzer.removeLowDF();
-//        analyzer.printIDFs();
+////        analyzer.printIDFs();
 //        analyzer.printControlledDict();
 
         /* 1.3 Compute similarity between documents */

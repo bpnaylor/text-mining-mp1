@@ -97,7 +97,23 @@ public class Post {
 	}
 	
 	public double similiarity(Post p) {
-		return 0;//compute the cosine similarity between this post and input p based on their vector space representation
+		double numerator = 0.0;
+		double denominatorA = 0.0;
+		double denominatorB = 0.0;
+
+		for (String i : m_vector.keySet()) {
+			numerator += m_vector.get(i).getVal1() * p.getVct().get(i).getVal1();
+			denominatorA += m_vector.get(i).getVal1() * m_vector.get(i).getVal1();
+			denominatorB += p.getVct().get(i).getVal1() * p.getVct().get(i).getVal1();
+		}
+
+		denominatorA = Math.sqrt(denominatorA);
+		denominatorB = Math.sqrt(denominatorB);
+
+		if(denominatorA != 0.0 && denominatorB !=0.0)
+			return(numerator/(denominatorA*denominatorB));
+		else
+			return(0.0);
 	}
 	
 	public Post(JSONObject json) {
