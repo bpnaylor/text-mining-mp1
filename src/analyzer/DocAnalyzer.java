@@ -21,14 +21,19 @@ import structures.LanguageModel;
 import structures.Post;
 import structures.Token;
 
+import java.util.stream.Collectors;
+
 public class DocAnalyzer {
 	int m_N;    	                            //N-gram to be created
     HashSet<String> m_stopwords;                //a list of stopwords
 	ArrayList<Post> m_reviews;                  // all loaded reviews
     HashMap<String, Token> m_stats;	            // table of tokens
+    HashMap<String, Token> m_bistats;           // table of bigrams
     List<Map.Entry<String, Token>> m_sorted;   	// table of tokens sorted by TTF
     Tokenizer m_tokenizer;
-//    LanguageModel m_langModel;
+    LanguageModel m_langModel;
+    int m_U;    // non-unique corpus unigram count
+    int m_B;    // non-unique corpus bigram count
 	
 	public DocAnalyzer(String tokenModel, int N) throws InvalidFormatException, FileNotFoundException, IOException {
 		m_N = N;
@@ -36,6 +41,9 @@ public class DocAnalyzer {
 		m_tokenizer = new TokenizerME(new TokenizerModel(new FileInputStream(tokenModel)));
 		m_stopwords = new HashSet<>();
 		m_stats = new HashMap<>();
+		m_bistats = new HashMap<>();
+		m_U = 0;
+		m_B = 0;
 	}
 
 	// load stopwords
@@ -92,11 +100,22 @@ public class DocAnalyzer {
                     System.out.println("loading test " + f.getAbsolutePath());
                     encodeTestDocs(loadJson(f.getAbsolutePath()), m_reviews);
                 }
+                else if (purpose.equals("MLE")) {
+                    System.out.println("loading train " + f.getAbsolutePath());
+                    buildLanguageModel(loadJson(f.getAbsolutePath()));
+                }
+                else if (purpose.equals("eval")) {
+                    System.out.println("loading eval " + f.getAbsolutePath());
+                    evalLanguageModel(loadJson(f.getAbsolutePath()));
+                }
+                else {
+                    System.out.println("Invalid purpose statement");
+                }
             }
 			else if (f.isDirectory())
 				loadDirectory(f.getAbsolutePath(), suffix, purpose);
 		}
-		size = m_reviews.size() - size;
+//		size = m_reviews.size() - size;
 //        System.out.println("Loading " + size + " review documents from " + folder);
     }
 
@@ -416,6 +435,156 @@ public class DocAnalyzer {
         }
     }
 
+    public void buildLanguageModel(JSONObject json) {
+        try {
+            JSONArray jarray = json.getJSONArray("Reviews");
+
+            for(int i=0; i<jarray.length(); i++) {
+                Post review = new Post(jarray.getJSONObject(i));
+                String[] tokens = tokenize(review.getContent());
+
+                checkMap(snowballStemming(normalize(tokens[0])).trim(), m_stats);
+                for (int j = 1; j<tokens.length-1; j++) {
+
+                    String last = snowballStemming(normalize(tokens[j - 1])).trim();
+                    String current = snowballStemming(normalize(tokens[j])).trim();
+
+                    if(current.length() > 0) {
+                        checkMap(current, m_stats);
+                        m_U++;
+
+                        if (last.length() > 0) {
+                            checkMap(last + "-" + current, m_bistats);
+                            m_B++;
+                        }
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void checkMap(String key, HashMap<String,Token> map) {
+	    Token t = map.get(key);
+
+        if (t == null) {
+            t = new Token(key);
+            t.setVal1(1);
+        } else {
+            t.setVal1(t.getVal1() + 1);
+        }
+
+        map.put(key, t);
+    }
+
+    public void findNexts(int numNexts, String prefix, LanguageModel lm) {
+
+        // list of seen unique bigrams with target prefix
+	    ArrayList<String> nexts = m_bistats.keySet().stream()
+                .filter(key -> prefix.equals(m_bistats.get(key).getPrefix()))
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        int S = nexts.size(); // number of seen unique postfixes that follow target prefix
+
+        Collections.sort(nexts, (n1, n2) -> Double.compare(lm.calcLinearSmoothedProb(n2), lm.calcLinearSmoothedProb(n1)));
+
+        System.out.println("Linear interpolation smoothing:");
+	    for (int i=0; i < numNexts; i++) {
+	        System.out.println(nexts.get(i).split("-")[1] + ": " + lm.calcLinearSmoothedProb(nexts.get(i)));
+        }
+
+        Collections.sort(nexts, (n1,n2) -> Double.compare(lm.calcAbsDiscountingProb(n2,S), lm.calcAbsDiscountingProb(n1,S)));
+
+        System.out.println("\nAbsolute discounting smoothing:");
+        for (int i=0; i < numNexts; i++) {
+            System.out.println(nexts.get(i).split("-")[1] + ": " + lm.calcAbsDiscountingProb(nexts.get(i),S));
+        }
+    }
+
+    public void generateText(int sentenceLength, int numSentences, LanguageModel unigramLM, LanguageModel bigramLM) {
+
+	    System.out.println("Unigram model");
+        for (int i=0; i<numSentences; i++) {
+            String token = unigramLM.samplingLinear(null);
+            double prob = unigramLM.calcLinearSmoothedProb(token);
+            String sentence = token;
+
+            for (int j = 1; j < sentenceLength; j++) {
+                token = unigramLM.samplingLinear(null);
+                prob *= unigramLM.calcLinearSmoothedProb(token);
+                sentence += " " + token;
+            }
+
+            System.out.println(sentence + ": " + prob);
+        }
+
+        System.out.println("\nLinear interpolation smoothing model");
+	    for (int i=0; i<numSentences; i++) {
+	        String prev = unigramLM.samplingLinear(null);
+            double prob = unigramLM.calcLinearSmoothedProb(prev);
+            String sentence = prev;
+
+            for (int j=1; j<sentenceLength; j++) {
+	            String bigram = bigramLM.samplingLinear(prev);
+                String next = m_bistats.get(bigram).getPostfix();
+                prob *= bigramLM.calcLinearSmoothedProb(bigram);
+                sentence += " " + next;
+                prev = next;
+            }
+            System.out.println(sentence + ": " + prob);
+        }
+
+        System.out.println("\nAbsolute discount smoothing model");
+
+        for (int i=0; i<numSentences; i++) {
+
+            String[] prevs = new String[sentenceLength];
+            prevs[0] = unigramLM.samplingAD(0,null,-1.0);
+            double prob = unigramLM.calcAbsDiscountingProb(prevs[0],0);
+            String sentence = prevs[0];
+
+            for (int j=1; j<sentenceLength; j++) {
+                final String prev = prevs[j-1];
+                ArrayList<String> nexts = m_bistats.keySet().stream()
+                        .filter(key -> prev.equals(m_bistats.get(key).getPrefix()))
+                        .collect(Collectors.toCollection(ArrayList::new));
+                int S = nexts.size(); // number of seen unique postfixes that follow target prefix
+
+                String bigram = bigramLM.samplingAD(S,nexts,-1.0);
+                String next = m_bistats.get(bigram).getPostfix();
+                prob *= bigramLM.calcAbsDiscountingProb(bigram,S);
+                sentence += " " + next;
+                prevs[j] = next;
+            }
+            System.out.println(sentence + ": " + prob);
+        }
+	}
+
+    public void evalLanguageModel(JSONObject json) {
+        try {
+            JSONArray jarray = json.getJSONArray("Reviews");
+
+            for(int i=0; i<jarray.length(); i++) {
+                Post review = new Post(jarray.getJSONObject(i));
+                String[] tokens = tokenize(review.getContent());
+                ArrayList<String> t = new ArrayList<>();
+
+                for (int j = 1; j<tokens.length-1; j++) {
+                    String current = snowballStemming(normalize(tokens[j])).trim();
+
+                    if(current.length() > 0)
+                        t.add(current);
+                }
+
+                review.setTokens(t.toArray(new String[t.size()]));
+                m_reviews.add(review);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
 
 		String tokenizer_path = args[0];
@@ -426,7 +595,7 @@ public class DocAnalyzer {
         String test_path = args[5];
         String query_path = args[6];        // TODO: add to IDE command line args
 
-		DocAnalyzer analyzer = new DocAnalyzer(tokenizer_path,2);
+		DocAnalyzer analyzer = new DocAnalyzer(tokenizer_path,1);
 
         /* 1.1 Understand Zipf's Law */
 //        analyzer.loadStopwords(stopwords_path);
@@ -438,15 +607,72 @@ public class DocAnalyzer {
 //        analyzer.loadStopwords(stopwords_path);
 //        analyzer.loadDirectory(data_path, data_type, "train");   // calls analyzeDocument
 //        analyzer.sortDictbyDF();
-////        analyzer.exportCSV(file_path,"df");
+//        analyzer.exportCSV(file_path,"df");
 //        analyzer.removeLowDF();
-////        analyzer.printIDFs();
+//        analyzer.printIDFs();
 //        analyzer.printControlledDict();
 
         /* 1.3 Compute similarity between documents */
-        analyzer.loadControlledDict("controlled_dict.txt");
-        analyzer.loadDirectory(test_path, data_type,"test");    //calls encodeTestDocs
-        analyzer.loadQuery(query_path);
+//        analyzer.loadControlledDict("controlled_dict.txt");
+//        analyzer.loadDirectory(test_path, data_type,"test");    //calls encodeTestDocs
+//        analyzer.loadQuery(query_path);
 
+        /* 2.1 MLE for language models with smoothing */
+//        analyzer.loadDirectory(data_path,data_type,"MLE");
+//        LanguageModel unigramLM = new LanguageModel(1,analyzer.m_U,analyzer.m_stats, null);
+//        LanguageModel bigramLM = new LanguageModel(2, analyzer.m_B, analyzer.m_bistats, unigramLM);
+//        analyzer.findNexts(20,"good",bigramLM);
+//
+        /* 2.2 Generate text documents from a language model*/
+//        analyzer.loadDirectory(data_path,data_type,"MLE");
+//        LanguageModel unigramLM = new LanguageModel(1,analyzer.m_U,analyzer.m_stats, null);
+//        LanguageModel bigramLM = new LanguageModel(2, analyzer.m_B, analyzer.m_bistats, unigramLM);
+//        analyzer.generateText(15,10,unigramLM,bigramLM);
+
+        /* 2.3 Language model evaluation */
+        analyzer.loadDirectory(data_path,data_type,"MLE");
+        LanguageModel unigramLM = new LanguageModel(1,analyzer.m_U,analyzer.m_stats, null);
+        LanguageModel bigramLM = new LanguageModel(2, analyzer.m_B, analyzer.m_bistats, unigramLM);
+        analyzer.loadDirectory(test_path,data_type,"eval");
+
+        System.out.println("Evaluation documents loaded");
+
+        int i = 0;
+        int numReviews = analyzer.m_reviews.size();
+
+        double[] averages = new double[3];
+        double[] sds = new double[3];
+        double[][] perplexities = new double[numReviews][3];
+
+        for (Post review : analyzer.m_reviews){
+            System.out.println("Calculating perplexities of review " + i + " of " + numReviews);
+
+            String[] smoothingMethods = {"a","l","d"};
+
+            for (int j=0; j<3; j++) {
+                double loglh = unigramLM.logLikelihood(review, smoothingMethods[j], null);
+                double lh = Math.exp(loglh);
+                double px = 1.0 / lh;
+                double n = (double) review.getTokens().length;
+                perplexities[i][j] = Math.pow(px, 1.0 / n);
+                averages[j] += perplexities[i][j];
+            }
+            i++;
+        }
+
+        for (i=0; i<3; i++) {
+            averages[i] /= numReviews;
+        }
+
+        for (i=0; i<numReviews; i++) {
+            for (int j=0; j<3; j++) {
+                sds[i] += Math.pow(perplexities[i][j]-averages[i],2);
+            }
+        }
+
+        for (i=0; i<3; i++) {
+            sds[i] /= numReviews;
+            sds[i] = Math.sqrt(sds[i]);
+        }
 	}
 }
